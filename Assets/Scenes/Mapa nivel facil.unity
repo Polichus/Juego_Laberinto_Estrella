@@ -197,7 +197,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 149397128}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 35c78b4c0b6d4b14392772d06a4aa9ad, type: 2}
   m_CullingMode: 0
@@ -291,13 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  animator: {fileID: 149397135}
-  sprites:
-  - {fileID: -273455227, guid: cf955d22076750b4ab185ecac2ca0957, type: 3}
-  - {fileID: -1586698532, guid: cf955d22076750b4ab185ecac2ca0957, type: 3}
-  - {fileID: 577150914, guid: cf955d22076750b4ab185ecac2ca0957, type: 3}
-  - {fileID: 1528161346, guid: cf955d22076750b4ab185ecac2ca0957, type: 3}
-  clip: []
+  animator: {fileID: 149397129}
   spriteRenderer: {fileID: 149397130}
 --- !u!61 &149397133
 BoxCollider2D:
@@ -383,6 +377,9 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 490ee4204beca83418edf5491060d703, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 39d3ba66e7c5cff4e9e2244b113642f0, type: 2}
+  - {fileID: 7400000, guid: dcffcf6e0056b034594cb0f0377ec503, type: 2}
+  - {fileID: 7400000, guid: 48678f3067b6ba54788f79eb2e2d633d, type: 2}
+  - {fileID: 7400000, guid: caa61a486ad701b4b8f1dc5fd8012ea4, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
