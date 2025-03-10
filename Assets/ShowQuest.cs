@@ -20,11 +20,11 @@ public class ShowQuest : MonoBehaviour
     {
         counter = 0;
         quest.SetActive(false);
-        contador_1 = GetComponent<TextMeshProUGUI>();
+        
         contador_1.text = "0 / 3";
-        contador_2 = GetComponent<TextMeshProUGUI>();
+      
         contador_2.text = "0 / 5";
-        contador_3 = GetComponent<TextMeshProUGUI>();
+       
         contador_3.text = "0 / 7";
         
     }
@@ -46,16 +46,14 @@ public class ShowQuest : MonoBehaviour
     }
     private void UpdateText()
     {
-       if(counter <= 3)
-            contador_1.text = counter.ToString() + " / 3";
-       if(counter >3 && counter <= 5)
-        {
+        if(counter <= 3)
+            contador_1.text = counter.ToString() + " / 5";
+        if (counter >3 && counter <= 5)
             contador_2.text = counter.ToString() + " / 5";
-        }
+      
         if(counter > 5 && counter <= 7)
-        {
             contador_3.text = counter.ToString() + " / 7";
-        }
+        
     }
     public void addTick(int valor)
     {
