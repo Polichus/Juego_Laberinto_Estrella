@@ -18,4 +18,9 @@ public class cierreeditor : MonoBehaviour
         SceneManager.LoadScene("Pantalla Principal");
     }
 
+    public void AnaraAEscenaSalir()
+    {
+        SceneManager.LoadScene("pantalla salir");
+    }
+
 }

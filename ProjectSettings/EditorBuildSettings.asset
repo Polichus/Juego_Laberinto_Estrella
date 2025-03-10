@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mapa nivel experto.unity
     guid: c1998e0aadcc0fd498f038292822ce8e
+  - enabled: 1
+    path: Assets/Scenes/pantalla salir.unity
+    guid: 7316e3c21ea3e004fbf0ee7bf9570017
   m_configObjects: {}
