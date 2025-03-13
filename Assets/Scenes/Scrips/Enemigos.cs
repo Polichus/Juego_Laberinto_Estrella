@@ -71,7 +71,7 @@ public class Enemigos : MonoBehaviour
     {
         Vector2 direccioEnemic = (personatge.transform.position - transform.position).normalized;
         Vector2 novaPosEnemic = new Vector2(transform.position.x + direccioEnemic.x * velocidad * Time.deltaTime, transform.position.y + direccioEnemic.y * velocidad * Time.deltaTime);
-        Debug.Log(novaPosEnemic);
+        //Debug.Log(novaPosEnemic);
         transform.position = novaPosEnemic;
     }
 

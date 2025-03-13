@@ -348,6 +348,7 @@ MonoBehaviour:
   speed: 5
   animator: {fileID: 149397129}
   spriteRenderer: {fileID: 149397130}
+  prefab_proyectil: {fileID: 8578869715151671282, guid: 671c8a79503b7a247beac74903baa069, type: 3}
 --- !u!61 &149397133
 BoxCollider2D:
   m_ObjectHideFlags: 0
