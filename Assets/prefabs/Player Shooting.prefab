@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4595903477663605385}
   - component: {fileID: -3876845528094715274}
   - component: {fileID: 6980151911218764271}
-  - component: {fileID: -8644887045328398741}
+  - component: {fileID: 8143840975498928436}
   m_Layer: 0
   m_Name: Player Shooting
   m_TagString: Player Shooting
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8578869715151671282}
   shootPoint: {fileID: 4755162193658965040}
-  projectileSpeed: 10
+  projectileSpeed: 5
 --- !u!61 &6980151911218764271
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.09, y: 0.24}
   m_EdgeRadius: 0
---- !u!50 &-8644887045328398741
+--- !u!50 &8143840975498928436
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

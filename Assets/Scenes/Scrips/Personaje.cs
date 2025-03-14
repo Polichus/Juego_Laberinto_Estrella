@@ -8,7 +8,7 @@ public class Personaje : MonoBehaviour
     public Animator animator;  // Cambiado de Animation a Animator
     public SpriteRenderer spriteRenderer;
     public GameObject prefab_proyectil;
-    private float projectileSpeed = 5f;
+    private float projectileSpeed = 10f;
     private Vector2 ultimaDireccio = Vector2.down;
 
     void Start()
@@ -91,10 +91,34 @@ public class Personaje : MonoBehaviour
             ultimaDireccio = direction;
         }
 
+        
+          
+        if (h > 0 && v < 0)
+        {
+            direction = Vector2.Lerp(Vector2.right, Vector2.down, 0.5f);
+            ultimaDireccio = direction;
+        }
+        else if (h > 0 && v > 0)
+        {
+            direction = Vector2.Lerp(Vector2.right, Vector2.up ,0.5f);
+            ultimaDireccio = direction;
+        }
+        else if (h < 0 && v < 0)
+        {
+            direction = Vector2.Lerp(Vector2.left, Vector2.down, 0.5f);
+            ultimaDireccio = direction;
+        }
+        else if (h < 0 && v > 0)
+        {
+            direction = Vector2.Lerp(Vector2.left, Vector2.up, 0.5f);
+            ultimaDireccio = direction;
+        }
+
+        
         // Convertir la dirección (Vector2) en un ángulo
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         // Asignar la rotación al proyectil (Quaternion)
-        projectile.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        projectile.transform.rotation = Quaternion.Euler(0, 0, angle - 90);  
 
         // Asignar la dirección y velocidad al proyectil
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
