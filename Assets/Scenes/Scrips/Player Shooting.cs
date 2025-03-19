@@ -30,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
 
     public class Enemy : MonoBehaviour
     {
-        public int health = 3;
+        public int health = 1;
         public Animator animator;
 
         public void TakeDamage()
