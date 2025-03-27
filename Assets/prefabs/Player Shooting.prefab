@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3876845528094715274}
   - component: {fileID: 6980151911218764271}
   - component: {fileID: 8143840975498928436}
+  - component: {fileID: -3643929569999426944}
   m_Layer: 0
   m_Name: Player Shooting
   m_TagString: Player Shooting
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8578869715151671282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d78207c75aa396143969714c6c3bf49d, type: 3}
   m_Name: 
@@ -174,3 +175,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-3643929569999426944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578869715151671282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 906781ebe0145f84c9d8ba43256f40c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
+  projectileSpeed: 10

@@ -12,15 +12,26 @@ public class PlayerShooting : MonoBehaviour
 
     }
 
-    public class Projectile : MonoBehaviour
+    /*public class Projectile : MonoBehaviour
     {
         internal float projectileSpeed;
         internal float lifetime;
+        GameObject[] enemies;
+        
+        private void GetEnemies()
+        {
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemigo in enemies)
+            {
+                Debug.Log("Encontrado: " + enemigo.name);
+            }
 
+            //Enemy enemy = collision.GetComponent<Enemy>();
+        }
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
-            if (enemy != null)
+            
+            if (collision.gameObject.tag=="enemy")
             {
                 enemy.TakeDamage();
                 Destroy(gameObject); // Destruir proyectil al impactar
@@ -30,7 +41,7 @@ public class PlayerShooting : MonoBehaviour
 
     public class Enemy : MonoBehaviour
     {
-        public int health = 3;
+        public int health = 1;
         public Animator animator;
 
         public void TakeDamage()
@@ -48,5 +59,5 @@ public class PlayerShooting : MonoBehaviour
             yield return new WaitForSeconds(1f); // Espera que termine la animación
             Destroy(gameObject);
         }
-    }
+    }*/
 }

@@ -10,6 +10,9 @@ public class Enemigos : MonoBehaviour
     private float tiempoCambio = 2f;  // Tiempo antes de cambiar de dirección
     private float tiempoTranscurrido = 0f;
     public GameObject personatge;
+    public float hp = 1f;
+    bool isalive= true;
+    public float timeWaitUntilDestoy = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -21,31 +24,52 @@ public class Enemigos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Opcionalmente, puedes mantener uno por defecto y alternar con la tecla "T":
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            // Alterna entre los dos métodos
-            if (updateMethod == UpdateMethod.Original)
-            {
-                updateMethod = UpdateMethod.AStar;
-            }
-            else
-            {
-                updateMethod = UpdateMethod.Original;
-            }
-        }
+        Debug.Log(hp);
 
-        // Ejecuta el método seleccionado
-        if (updateMethod == UpdateMethod.Original)
+        if (hp<=0)
         {
-            movimentEnemic();
+           /* Debug.Log("entra en vida <0");
+            timeWaitUntilDestoy -= Time.deltaTime;
+            if (timeWaitUntilDestoy < 0f)
+            {*/
+                DieAnim();
+           // }
         }
         else
         {
-            movimentEnemicAEstrella();
+
+            // Opcionalmente, puedes mantener uno por defecto y alternar con la tecla "T":
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                // Alterna entre los dos métodos
+                if (updateMethod == UpdateMethod.Original)
+                {
+                    updateMethod = UpdateMethod.AStar;
+                }
+                else
+                {
+                    updateMethod = UpdateMethod.Original;
+                }
+            }
+
+            // Ejecuta el método seleccionado
+            if (updateMethod == UpdateMethod.Original)
+            {
+                movimentEnemic();
+            }
+            else
+            {
+                movimentEnemicAEstrella();
+            }
         }
     }
-
+    private void CheckUnitHp()
+    {
+        if (hp <= 0f)
+        {
+            isalive = true;
+        }
+    }
     private void MovimentAleatori()
     {
         // Mueve al enemigo en la dirección seleccionada
@@ -223,6 +247,15 @@ public class Enemigos : MonoBehaviour
                 currentPathIndex++;
             }
         }
+    }
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+    }
+    public void DieAnim()
+    {
+        //yield return new WaitForSeconds(1f); // Espera que termine la animación
+        Destroy(gameObject);
     }
 
     // Enumeración para alternar entre métodos de actualización

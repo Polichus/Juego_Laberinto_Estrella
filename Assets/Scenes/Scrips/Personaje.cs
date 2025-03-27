@@ -8,7 +8,7 @@ public class Personaje : MonoBehaviour
     public Animator animator;  // Cambiado de Animation a Animator
     public SpriteRenderer spriteRenderer;
     public GameObject prefab_proyectil;
-    private float projectileSpeed = 10f;
+    private float projectileSpeed = 15f;
     private Vector2 ultimaDireccio = Vector2.down;
 
     void Start()
