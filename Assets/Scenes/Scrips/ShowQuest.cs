@@ -47,7 +47,7 @@ public class ShowQuest : MonoBehaviour
     private void UpdateText()
     {
         if(counter <= 3)
-            contador_1.text = counter.ToString() + " / 5";
+            contador_1.text = counter.ToString() + " / 3";
         if (counter >3 && counter <= 5)
             contador_2.text = counter.ToString() + " / 5";
       
@@ -69,6 +69,11 @@ public class ShowQuest : MonoBehaviour
         {
             tickSprite[2].sprite = tick;
         }
+    }
+
+    public int  getScore()
+    {
+        return counter;
     }
 
 

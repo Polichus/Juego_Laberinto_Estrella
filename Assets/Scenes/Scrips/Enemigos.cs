@@ -14,9 +14,14 @@ public class Enemigos : MonoBehaviour
     bool isalive= true;
     public float timeWaitUntilDestoy = 0f;
 
+    GameObject questContainer;
     // Start is called before the first frame update
     void Start()
     {
+
+        questContainer = GameObject.Find("QuestContainer");
+        
+            
         // Inicializa el enemigo en una dirección aleatoria
         CambiarDireccionAleatoria();
     }
@@ -254,6 +259,7 @@ public class Enemigos : MonoBehaviour
     }
     public void DieAnim()
     {
+        questContainer.GetComponent<ShowQuest>().IncrementCounter(1);
         //yield return new WaitForSeconds(1f); // Espera que termine la animación
         Destroy(gameObject);
     }
