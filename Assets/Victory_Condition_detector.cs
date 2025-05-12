@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Victory_Condition_detector : MonoBehaviour
 {
     GameObject showQuest;
     public GameObject [] panels;
+    public GameObject tequeda;
     void Start()
     {
         showQuest = GameObject.Find("QuestContainer");
@@ -37,6 +40,9 @@ public class Victory_Condition_detector : MonoBehaviour
 
             if (showQuest.GetComponent<ShowQuest>().getScore() < 7)
             {
+                int maxEnemyToKill = 7;
+                maxEnemyToKill -= GetComponent<ShowQuest>().getScore();
+                tequeda.GetComponent<TextMeshPro>().text = maxEnemyToKill.ToString();
                 panels[1].SetActive(true);
             }
         }
