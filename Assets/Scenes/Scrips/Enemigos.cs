@@ -11,38 +11,30 @@ public class Enemigos : MonoBehaviour
     private float tiempoTranscurrido = 0f;
     public GameObject personatge;
     public float hp = 1f;
-    bool isalive= true;
+    bool isalive = true;
     public float timeWaitUntilDestoy = 0f;
 
     GameObject questContainer;
+
+    private Rigidbody2D rb;  // Rigidbody2D para el movimiento físico del enemigo
+
     // Start is called before the first frame update
     void Start()
     {
-
         questContainer = GameObject.Find("QuestContainer");
-        
-            
-        // Inicializa el enemigo en una dirección aleatoria
-        CambiarDireccionAleatoria();
+        rb = GetComponent<Rigidbody2D>();  // Obtiene el Rigidbody2D
+        CambiarDireccionAleatoria();  // Inicializa el movimiento aleatorio
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(hp);
-
-        if (hp<=0)
+        if (hp <= 0)
         {
-           /* Debug.Log("entra en vida <0");
-            timeWaitUntilDestoy -= Time.deltaTime;
-            if (timeWaitUntilDestoy < 0f)
-            {*/
-                DieAnim();
-           // }
+            DieAnim();
         }
         else
         {
-
             // Opcionalmente, puedes mantener uno por defecto y alternar con la tecla "T":
             if (Input.GetKeyDown(KeyCode.T))
             {
@@ -60,7 +52,7 @@ public class Enemigos : MonoBehaviour
             // Ejecuta el método seleccionado
             if (updateMethod == UpdateMethod.Original)
             {
-                movimentEnemic();
+                MovimentEnemic();
             }
             else
             {
@@ -68,40 +60,32 @@ public class Enemigos : MonoBehaviour
             }
         }
     }
-    private void CheckUnitHp()
+
+    private void MovimentEnemic()
     {
-        if (hp <= 0f)
+        // Verifica si hay obstáculos antes de mover al enemigo
+        Vector2 direccionMovimiento = direcciones[indiceDireccion];
+        Vector2 proximaPosicion = (Vector2)transform.position + direccionMovimiento * velocidad * Time.deltaTime;
+
+        // Detecta si el enemigo va a chocar con algo usando un raycast
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direccionMovimiento, velocidad * Time.deltaTime);
+
+        if (hit.collider != null && hit.collider.CompareTag("Pared"))  // Si el raycast toca una pared
         {
-            isalive = true;
+            // Si hay un obstáculo, cambia la dirección para evitar quedarse atascado
+            CambiarDireccionAleatoria();
+        }
+        else
+        {
+            // Mueve al enemigo de acuerdo a la dirección elegida, sin interferencias
+            rb.velocity = direccionMovimiento * velocidad;
         }
     }
-    private void MovimentAleatori()
-    {
-        // Mueve al enemigo en la dirección seleccionada
-        transform.Translate(direcciones[indiceDireccion] * velocidad * Time.deltaTime);
 
-        // Cuenta el tiempo para cambiar de dirección
-        tiempoTranscurrido += Time.deltaTime;
-        if (tiempoTranscurrido >= tiempoCambio)
-        {
-            tiempoTranscurrido = 0f;  // Reinicia el tiempo
-            CambiarDireccionAleatoria();  // Cambia la dirección aleatoriamente
-        }
-    }
-
-    // Función para cambiar la dirección aleatoriamente
     private void CambiarDireccionAleatoria()
     {
-        // Elige un índice aleatorio entre las direcciones posibles
-        indiceDireccion = Random.Range(0, direcciones.Length);  // Random.Range(0, 4) da un número entre 0 y 3
-    }
-
-    private void movimentEnemic()
-    {
-        Vector2 direccioEnemic = (personatge.transform.position - transform.position).normalized;
-        Vector2 novaPosEnemic = new Vector2(transform.position.x + direccioEnemic.x * velocidad * Time.deltaTime, transform.position.y + direccioEnemic.y * velocidad * Time.deltaTime);
-        //Debug.Log(novaPosEnemic);
-        transform.position = novaPosEnemic;
+        // Elige una nueva dirección aleatoria para el enemigo
+        indiceDireccion = Random.Range(0, direcciones.Length);
     }
 
     // Nueva implementación de A* (estrella) para seguir al jugador, manteniendo el código original intacto
@@ -253,15 +237,16 @@ public class Enemigos : MonoBehaviour
             }
         }
     }
+
     public void TakeDamage(float damage)
     {
         hp -= damage;
     }
+
     public void DieAnim()
     {
         questContainer.GetComponent<ShowQuest>().IncrementCounter(1);
-        //yield return new WaitForSeconds(1f); // Espera que termine la animación
-        Destroy(gameObject);
+        Destroy(gameObject);  // Elimina al enemigo
     }
 
     // Enumeración para alternar entre métodos de actualización
@@ -273,3 +258,4 @@ public class Enemigos : MonoBehaviour
 
     private UpdateMethod updateMethod = UpdateMethod.Original; // Por defecto, usa el movimiento original
 }
+  

@@ -91,8 +91,8 @@ public class Personaje : MonoBehaviour
             ultimaDireccio = direction;
         }
 
-        
-          
+
+
         if (h > 0 && v < 0)
         {
             direction = Vector2.Lerp(Vector2.right, Vector2.down, 0.5f);
@@ -100,7 +100,7 @@ public class Personaje : MonoBehaviour
         }
         else if (h > 0 && v > 0)
         {
-            direction = Vector2.Lerp(Vector2.right, Vector2.up ,0.5f);
+            direction = Vector2.Lerp(Vector2.right, Vector2.up, 0.5f);
             ultimaDireccio = direction;
         }
         else if (h < 0 && v < 0)
@@ -114,11 +114,11 @@ public class Personaje : MonoBehaviour
             ultimaDireccio = direction;
         }
 
-        
+
         // Convertir la dirección (Vector2) en un ángulo
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         // Asignar la rotación al proyectil (Quaternion)
-        projectile.transform.rotation = Quaternion.Euler(0, 0, angle - 90);  
+        projectile.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
 
         // Asignar la dirección y velocidad al proyectil
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
@@ -129,4 +129,3 @@ public class Personaje : MonoBehaviour
         }
     }
 }
-

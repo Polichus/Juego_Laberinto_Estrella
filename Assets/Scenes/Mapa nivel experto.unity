@@ -27850,9 +27850,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce806f28bb802384b817f29b08a01d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  animator: {fileID: 353961596}
-  spriteRenderer: {fileID: 353961597}
+  speed: 3
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   prefab_proyectil: {fileID: 8578869715151671282, guid: 671c8a79503b7a247beac74903baa069, type: 3}
 --- !u!95 &353961596
 Animator:
@@ -28215,7 +28215,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 835bc129b07dc204ba5d169dd86d9461, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 49874b401c6f8c24db1aee1b55497555, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -28235,7 +28236,7 @@ MonoBehaviour:
   velocidad: 3
   personatge: {fileID: 353961591}
   hp: 1
-  timeWaitUntilDestoy: 1
+  timeWaitUntilDestoy: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -28431,7 +28432,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 835bc129b07dc204ba5d169dd86d9461, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 49874b401c6f8c24db1aee1b55497555, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -28451,7 +28453,7 @@ MonoBehaviour:
   velocidad: 3
   personatge: {fileID: 353961591}
   hp: 1
-  timeWaitUntilDestoy: 1
+  timeWaitUntilDestoy: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -29388,7 +29390,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 835bc129b07dc204ba5d169dd86d9461, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 49874b401c6f8c24db1aee1b55497555, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -29408,7 +29411,7 @@ MonoBehaviour:
   velocidad: 3
   personatge: {fileID: 353961591}
   hp: 1
-  timeWaitUntilDestoy: 1
+  timeWaitUntilDestoy: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -30025,7 +30028,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 835bc129b07dc204ba5d169dd86d9461, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 49874b401c6f8c24db1aee1b55497555, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -30045,7 +30049,7 @@ MonoBehaviour:
   velocidad: 3
   personatge: {fileID: 353961591}
   hp: 1
-  timeWaitUntilDestoy: 1
+  timeWaitUntilDestoy: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -30241,7 +30245,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 835bc129b07dc204ba5d169dd86d9461, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 49874b401c6f8c24db1aee1b55497555, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -30261,7 +30266,7 @@ MonoBehaviour:
   velocidad: 3
   personatge: {fileID: 353961591}
   hp: 1
-  timeWaitUntilDestoy: 1
+  timeWaitUntilDestoy: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -45694,7 +45699,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 835bc129b07dc204ba5d169dd86d9461, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 49874b401c6f8c24db1aee1b55497555, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -45714,7 +45720,7 @@ MonoBehaviour:
   velocidad: 3
   personatge: {fileID: 353961591}
   hp: 1
-  timeWaitUntilDestoy: 1
+  timeWaitUntilDestoy: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -46044,7 +46050,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 835bc129b07dc204ba5d169dd86d9461, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 49874b401c6f8c24db1aee1b55497555, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -46064,7 +46071,7 @@ MonoBehaviour:
   velocidad: 3
   personatge: {fileID: 353961591}
   hp: 1
-  timeWaitUntilDestoy: 1
+  timeWaitUntilDestoy: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
