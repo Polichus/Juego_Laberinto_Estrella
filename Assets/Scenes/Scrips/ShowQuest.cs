@@ -1,20 +1,29 @@
-using TMPro;
+Ôªøusing TMPro;
 using UnityEngine;
 
 public class ShowQuest : MonoBehaviour
 {
     [Header("Asignar en Inspector")]
-    public GameObject questPanel; // Panel padre de las misiones
-    public TextMeshProUGUI contador_1; // "0/3 enemigos"
-    public TextMeshProUGUI contador_2; // "0/5 enemigos"
-    public TextMeshProUGUI contador_3; // "0/7 enemigos"
+    public GameObject questPanel;
+    public TextMeshProUGUI contador_1;
+    public TextMeshProUGUI contador_2;
+    public TextMeshProUGUI contador_3;
+    public GameObject tick1;
+    public GameObject tick2;
+    public GameObject tick3;
 
-    private int totalEnemiesKilled; // Contador TOTAL de enemigos eliminados
+
+    public TextMeshProUGUI textoRestante; // <- A√ëADIDO: texto "Te falta matar..."
+
+    //public int enemiesKilled = 7;
+    public int totalEnemiesKilled;
 
     void Start()
     {
-        questPanel?.SetActive(false); // Oculta el panel al inicio (el ? evita nulls)
+        questPanel?.SetActive(false);
         ResetCounters();
+        ActualizarTextoRestante(); // <- Actualiza texto al inicio
+        ValorsGlobals.enemigos_restantes = 7;
     }
 
     void Update()
@@ -23,51 +32,78 @@ public class ShowQuest : MonoBehaviour
         {
             ToggleQuestPanel();
         }
+
     }
 
     public void AddKill()
     {
         totalEnemiesKilled++;
-        UpdateCounters();
+        ValorsGlobals.enemigos_restantes--;
 
-        // Opcional: Notificar cuando se completa una misiÛn
+        if (ValorsGlobals.enemigos_restantes < 0)
+            ValorsGlobals.enemigos_restantes = 0;
+
+        Debug.Log($"Enemigos restantes: {ValorsGlobals.enemigos_restantes}");
+
+        UpdateCounters();
         CheckQuestCompletion();
+        ActualizarTextoRestante(); // <- Actualiza el texto aqu√≠
     }
 
     void UpdateCounters()
     {
-        // MisiÛn 1: 0-3 enemigos
         int progress1 = Mathf.Clamp(totalEnemiesKilled, 0, 3);
         contador_1.text = $"{progress1} / 3";
 
-        // MisiÛn 2: 3-8 enemigos (5 adicionales)
-        int progress2 = Mathf.Clamp(totalEnemiesKilled - 3, 0, 5);
-        contador_2.text = $"{progress2} / 5";
+        int progress2 = Mathf.Clamp(totalEnemiesKilled - 3, 0, 2);
+        contador_2.text = $"{progress2} / 2";
 
-        // MisiÛn 3: 8-15 enemigos (7 adicionales)
-        int progress3 = Mathf.Clamp(totalEnemiesKilled - 8, 0, 7);
-        contador_3.text = $"{progress3} / 7";
+        int progress3 = Mathf.Clamp(totalEnemiesKilled - 5, 0, 2);
+        contador_3.text = $"{progress3} / 2";
     }
 
     void ToggleQuestPanel()
     {
         if (questPanel != null)
-        {
             questPanel.SetActive(!questPanel.activeSelf);
-        }
     }
 
     void CheckQuestCompletion()
     {
-        if (totalEnemiesKilled == 3) Debug.Log("MisiÛn 1 completada!");
-        if (totalEnemiesKilled == 5) Debug.Log("MisiÛn 2 completada!");
-        if (totalEnemiesKilled == 7) Debug.Log("MisiÛn 3 completada!");
+        if (tick1 != null && totalEnemiesKilled >= 3)
+        {
+            tick1.SetActive(true);
+            Debug.Log("Misi√≥n 1 completada!");
+        }
+        if (tick2 != null && totalEnemiesKilled >= 5)
+        {
+            tick2.SetActive(true);
+            Debug.Log("Misi√≥n 2 completada!");
+        }
+        if (tick3 != null && totalEnemiesKilled >= 7)
+        {
+            tick3.SetActive(true);
+            Debug.Log("Misi√≥n 3 completada!");
+        }
     }
+
+
+
 
     void ResetCounters()
     {
         totalEnemiesKilled = 0;
+        ValorsGlobals.enemigos_restantes = 7;
         UpdateCounters();
+    }
+
+    void ActualizarTextoRestante()
+    {
+        if (textoRestante != null)
+        {
+            textoRestante.text = $"Te falta matar: {ValorsGlobals.enemigos_restantes} enemigo(s)";
+            Debug.Log($"Texto actualizado directamente desde ShowQuest: {textoRestante.text}");
+        }
     }
 
     public int getScore()

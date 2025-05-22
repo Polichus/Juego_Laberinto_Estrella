@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class EnemigoRuta : MonoBehaviour
 {
@@ -63,10 +64,11 @@ public class EnemigoRuta : MonoBehaviour
         // Llamar al método para incrementar el contador de misiones (suponiendo que 1 es el valor de incremento)
         if (showQuest != null)
         {
-          //  showQuest.IncrementCounter(1);
+            //  showQuest.IncrementCounter(1);
         }
 
         // Aquí puedes agregar otras lógicas, como efectos de muerte, animaciones, etc.
         Destroy(gameObject);  // Elimina el objeto del juego
     }
+
 }

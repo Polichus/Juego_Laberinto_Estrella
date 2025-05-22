@@ -10,6 +10,8 @@ TagManager:
   - Trampa
   - Bola
   - Pulpo
+  - Fantasma1
+  - Fantasma2
   layers:
   - Default
   - TransparentFX

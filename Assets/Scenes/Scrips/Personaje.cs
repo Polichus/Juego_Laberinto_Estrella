@@ -114,7 +114,7 @@ public class Personaje : MonoBehaviour
             if (posInicial != null)
             {
                 transform.position = posInicial.transform.position;
-                Debug.Log("¡Has tocado una trampa! Regresando a inicio.");
+                Debug.Log("¡Has tocado una Bola! Regresando a inicio.");
             }
             else
             {
@@ -128,7 +128,21 @@ public class Personaje : MonoBehaviour
             if (posInicial != null)
             {
                 transform.position = posInicial.transform.position;
-                Debug.Log("¡Has tocado una trampa! Regresando a inicio.");
+                Debug.Log("¡Has tocado al Pulpo! Regresando a inicio.");
+            }
+            else
+            {
+                Debug.LogWarning("No se ha asignado posInicial.");
+            }
+        }
+
+        if (collision.gameObject.CompareTag("Fantasma1"))
+        {
+            // Teletransportar al personaje a la posición inicial
+            if (posInicial != null)
+            {
+                transform.position = posInicial.transform.position;
+                Debug.Log("¡Has tocado un Fantasma! Regresando a inicio.");
             }
             else
             {
