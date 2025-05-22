@@ -79,4 +79,4 @@ public class Victory_Condition_detector : MonoBehaviour
             }
         }
     }
-}
+}  
