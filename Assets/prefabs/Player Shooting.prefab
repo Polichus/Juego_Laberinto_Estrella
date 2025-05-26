@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4755162193658965040}
   - component: {fileID: 4595903477663605385}
-  - component: {fileID: -3876845528094715274}
+  - component: {fileID: -4877056377316328785}
+  - component: {fileID: -4752654770866927221}
   - component: {fileID: 6980151911218764271}
   - component: {fileID: 8143840975498928436}
-  - component: {fileID: -3643929569999426944}
   m_Layer: 0
   m_Name: Player Shooting
   m_TagString: Player Shooting
@@ -88,7 +88,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3876845528094715274
+--- !u!114 &-4877056377316328785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8578869715151671282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9cab6a32f8e4464c870b06333cc6aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-4752654770866927221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 8578869715151671282}
   shootPoint: {fileID: 4755162193658965040}
-  projectileSpeed: 5
+  projectileSpeed: 10
 --- !u!61 &6980151911218764271
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,18 +187,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-3643929569999426944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8578869715151671282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 906781ebe0145f84c9d8ba43256f40c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
-  shootPoint: {fileID: 0}
-  projectileSpeed: 10

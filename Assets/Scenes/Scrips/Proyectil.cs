@@ -4,31 +4,21 @@ using UnityEngine;
 
 public class Proyectil : MonoBehaviour
 {
-    public GameObject projectilePrefab; // Prefab del proyectil
-    public Transform shootPoint; // Punto desde donde se dispara
-    public float projectileSpeed = 10f;
-    public Enemigos enemies;
-
-    private void Start()
-    {
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        // Daño a EnemigoFantasma
+        /*EnemigoFantasma enemigo = collision.GetComponent<EnemigoFantasma>();
+        if (enemigo != null)
         {
-            Enemigos enemigo = collision.GetComponent<Enemigos>();
-            if (enemigo != null)
-            {
-                enemigo.TakeDamage(1);
-            }
-            //collision.GetComponent<Enemigos>().TakeDamage(1);
-            Destroy(this.gameObject);
-        }
-        else if(collision.gameObject.tag == "wall")
+            enemigo.RecibirDaño(1);
+            Destroy(gameObject);
+            return;
+        }*/
+
+        // Destruye si choca con una pared
+        if (collision.CompareTag("wall"))
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
-
 }

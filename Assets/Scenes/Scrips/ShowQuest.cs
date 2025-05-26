@@ -1,80 +1,113 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ShowQuest : MonoBehaviour
 {
-    public GameObject quest;
+    [Header("Asignar en Inspector")]
+    public GameObject questPanel;
     public TextMeshProUGUI contador_1;
     public TextMeshProUGUI contador_2;
     public TextMeshProUGUI contador_3;
-    public SpriteRenderer[] tickSprite;
-    public Sprite tick;
-    private int counter;
+    public GameObject tick1;
+    public GameObject tick2;
+    public GameObject tick3;
 
-    // Start is called before the first frame update
+
+    public TextMeshProUGUI textoRestante; // <- AÑADIDO: texto "Te falta matar..."
+
+    //public int enemiesKilled = 7;
+    public int totalEnemiesKilled;
+
     void Start()
     {
-        counter = 0;
-        quest.SetActive(false);
-        
-        contador_1.text = "0 / 3";
-      
-        contador_2.text = "0 / 5";
-       
-        contador_3.text = "0 / 7";
-        
+        questPanel?.SetActive(false);
+        ResetCounters();
+        ActualizarTextoRestante(); // <- Actualiza texto al inicio
+        ValorsGlobals.enemigos_restantes = 7;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))        
-            quest.SetActive(true);
-        if(Input.GetKeyUp(KeyCode.Tab))
-            quest.SetActive(false);
-        UpdateText();
-    }
-
-    public void IncrementCounter(int value) 
-    {
-       counter += value;
-
-    }
-    private void UpdateText()
-    {
-        if(counter <= 3)
-            contador_1.text = counter.ToString() + " / 3";
-        if (counter >3 && counter <= 5)
-            contador_2.text = counter.ToString() + " / 5";
-      
-        if(counter > 5 && counter <= 7)
-            contador_3.text = counter.ToString() + " / 7";
-        
-    }
-    public void addTick(int valor)
-    {
-        if(valor == 1)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            tickSprite[0].sprite = tick;
+            ToggleQuestPanel();
         }
-        if (valor == 2)
-        {
-            tickSprite[1].sprite = tick;
-        }
-        if (valor == 3)
-        {
-            tickSprite[2].sprite = tick;
-        }
+
     }
 
-    public int  getScore()
+    public void AddKill()
     {
-        return counter;
+        totalEnemiesKilled++;
+        ValorsGlobals.enemigos_restantes--;
+
+        if (ValorsGlobals.enemigos_restantes < 0)
+            ValorsGlobals.enemigos_restantes = 0;
+
+        Debug.Log($"Enemigos restantes: {ValorsGlobals.enemigos_restantes}");
+
+        UpdateCounters();
+        CheckQuestCompletion();
+        ActualizarTextoRestante(); // <- Actualiza el texto aquí
+    }
+
+    void UpdateCounters()
+    {
+        int progress1 = Mathf.Clamp(totalEnemiesKilled, 0, 3);
+        contador_1.text = $"{progress1} / 3";
+
+        int progress2 = Mathf.Clamp(totalEnemiesKilled - 3, 0, 2);
+        contador_2.text = $"{progress2} / 2";
+
+        int progress3 = Mathf.Clamp(totalEnemiesKilled - 5, 0, 2);
+        contador_3.text = $"{progress3} / 2";
+    }
+
+    void ToggleQuestPanel()
+    {
+        if (questPanel != null)
+            questPanel.SetActive(!questPanel.activeSelf);
+    }
+
+    void CheckQuestCompletion()
+    {
+        if (tick1 != null && totalEnemiesKilled >= 3)
+        {
+            tick1.SetActive(true);
+            Debug.Log("Misión 1 completada!");
+        }
+        if (tick2 != null && totalEnemiesKilled >= 5)
+        {
+            tick2.SetActive(true);
+            Debug.Log("Misión 2 completada!");
+        }
+        if (tick3 != null && totalEnemiesKilled >= 7)
+        {
+            tick3.SetActive(true);
+            Debug.Log("Misión 3 completada!");
+        }
     }
 
 
+
+
+    void ResetCounters()
+    {
+        totalEnemiesKilled = 0;
+        ValorsGlobals.enemigos_restantes = 7;
+        UpdateCounters();
+    }
+
+    void ActualizarTextoRestante()
+    {
+        if (textoRestante != null)
+        {
+            textoRestante.text = $"Te falta matar: {ValorsGlobals.enemigos_restantes} enemigo(s)";
+            Debug.Log($"Texto actualizado directamente desde ShowQuest: {textoRestante.text}");
+        }
+    }
+
+    public int getScore()
+    {
+        return totalEnemiesKilled;
+    }
 }
