@@ -218,6 +218,7 @@ MonoBehaviour:
   - {fileID: 952062886}
   - {fileID: 377858768}
   tequeda: {fileID: 1622817464}
+  nivelExperto: 1
 --- !u!61 &46034629
 BoxCollider2D:
   m_ObjectHideFlags: 0

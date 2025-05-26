@@ -10,7 +10,7 @@ public class cierreeditor : MonoBehaviour
     public void QuitEditor()
     {
         EditorApplication.isPlaying = false;
-        EditorApplication.Exit(0);
+        EditorApplication.isPaused=true;
     }
 
     public void AnaraAEscenaPrincipal()

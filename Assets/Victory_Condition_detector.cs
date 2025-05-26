@@ -7,13 +7,13 @@ public class Victory_Condition_detector : MonoBehaviour
 {
     public GameObject[] panels;      // [0] = victoria, [1] = misiones incompletas
     public TextMeshProUGUI tequeda;  // Texto panel misiones incompletas
-
+    public bool nivelExperto;
     //public int enemiesLeft = 7;      // <- CONTROL DIRECTO DE LOS ENEMIGOS
     private bool gameEnded = false;
 
     void Start()
     {
-        
+        nivelExperto = false;
         foreach (GameObject panel in panels)
             panel.SetActive(false);
 
@@ -48,8 +48,15 @@ public class Victory_Condition_detector : MonoBehaviour
     IEnumerator VolverAlMenu()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Pantalla Principal");
+        if (nivelExperto)
+            SceneManager.LoadScene("Pantalla Principal");
+        else
+        {
+            SceneManager.LoadScene("Niveles");
+        }
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
